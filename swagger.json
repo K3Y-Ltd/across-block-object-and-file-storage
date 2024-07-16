@@ -1,0 +1,1242 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Healthcheck",
+                "description": "Healthcheck endpoint",
+                "operationId": "healthcheck__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{bucket_name}/files": {
+            "get": {
+                "summary": "List Files",
+                "description": "List all files in a specified bucket",
+                "operationId": "list_files__bucket_name__files_get",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Upload File",
+                "description": "Upload a file to a specified bucket",
+                "operationId": "upload_file__bucket_name__files_post",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_upload_file__bucket_name__files_post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{bucket_name}/files/{filename}": {
+            "get": {
+                "summary": "Get File",
+                "description": "Retrieve a file from a specified bucket",
+                "operationId": "get_file__bucket_name__files__filename__get",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    },
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete File",
+                "description": "Delete a file from a specified bucket",
+                "operationId": "delete_file__bucket_name__files__filename__delete",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    },
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{bucket_name}/files/{filename}/metadata": {
+            "get": {
+                "summary": "Get File Metadata",
+                "description": "Get file metadata from a specified bucket",
+                "operationId": "get_file_metadata__bucket_name__files__filename__metadata_get",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    },
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/tstat/files": {
+            "get": {
+                "tags": [
+                    "tstat",
+                    "tstat"
+                ],
+                "summary": "List Analytics Tstat Files",
+                "description": "Lists all files in Analytics - Tstat",
+                "operationId": "list_analytics_tstat_files_analytics_tstat_files_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tstat",
+                    "tstat"
+                ],
+                "summary": "Upload Analytics Tstat File",
+                "description": "Uploads a file to Analytics - Tstat",
+                "operationId": "upload_analytics_tstat_file_analytics_tstat_files_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_upload_analytics_tstat_file_analytics_tstat_files_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/tstat/files/{filename}": {
+            "get": {
+                "tags": [
+                    "tstat",
+                    "tstat"
+                ],
+                "summary": "Get Analytics Tstat File",
+                "description": "Retrieves a file from Analytics - Tstat",
+                "operationId": "get_analytics_tstat_file_analytics_tstat_files__filename__get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tstat",
+                    "tstat"
+                ],
+                "summary": "Delete Analytics File",
+                "description": "Deletes a file from Analytics - Tstat",
+                "operationId": "delete_analytics_file_analytics_tstat_files__filename__delete",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/tstat/files/{filename}/metadata": {
+            "get": {
+                "tags": [
+                    "tstat",
+                    "tstat"
+                ],
+                "summary": "Get Analytics Tstat File Metadata",
+                "description": "Get file Metadata from Analytics - Tstat",
+                "operationId": "get_analytics_tstat_file_metadata_analytics_tstat_files__filename__metadata_get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/pfcpflowmeter/files": {
+            "get": {
+                "tags": [
+                    "pfcpflowmeter",
+                    "pfcpflowmeter"
+                ],
+                "summary": "List Analytics Pfcpflowmeter Files",
+                "description": "Lists all files in Analytics - Pfcpflowmeter",
+                "operationId": "list_analytics_pfcpflowmeter_files_analytics_pfcpflowmeter_files_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "pfcpflowmeter",
+                    "pfcpflowmeter"
+                ],
+                "summary": "Upload Analytics Pfcpflowmeter File",
+                "description": "Uploads a file to Analytics - Pfcpflowmeter",
+                "operationId": "upload_analytics_pfcpflowmeter_file_analytics_pfcpflowmeter_files_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_upload_analytics_pfcpflowmeter_file_analytics_pfcpflowmeter_files_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/pfcpflowmeter/files/{filename}": {
+            "get": {
+                "tags": [
+                    "pfcpflowmeter",
+                    "pfcpflowmeter"
+                ],
+                "summary": "Get Analytics Pfcfpflowmeter File",
+                "description": "Retrieves a file from Analytics - Tstat",
+                "operationId": "get_analytics_pfcfpflowmeter_file_analytics_pfcpflowmeter_files__filename__get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "pfcpflowmeter",
+                    "pfcpflowmeter"
+                ],
+                "summary": "Delete Analytics File",
+                "description": "Deletes a file from Analytics - Pfcpflowmeter",
+                "operationId": "delete_analytics_file_analytics_pfcpflowmeter_files__filename__delete",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/pfcpflowmeter/files/{filename}/metadata": {
+            "get": {
+                "tags": [
+                    "pfcpflowmeter",
+                    "pfcpflowmeter"
+                ],
+                "summary": "Get Analytics Pfcpflowmeter File Metadata",
+                "description": "Get file Metadata from Analytics - Pfcpflowmeter",
+                "operationId": "get_analytics_pfcpflowmeter_file_metadata_analytics_pfcpflowmeter_files__filename__metadata_get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/cicflowmeter/files": {
+            "get": {
+                "tags": [
+                    "cicflowmeter",
+                    "cicflowmeter"
+                ],
+                "summary": "List Analytics Cicflowmeter Files",
+                "description": "Lists all files in Analytics - Cicflowmeter",
+                "operationId": "list_analytics_cicflowmeter_files_analytics_cicflowmeter_files_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cicflowmeter",
+                    "cicflowmeter"
+                ],
+                "summary": "Upload Analytics Cicflowmeter File",
+                "description": "Uploads a file to Analytics - Cicflowmeter",
+                "operationId": "upload_analytics_cicflowmeter_file_analytics_cicflowmeter_files_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_upload_analytics_cicflowmeter_file_analytics_cicflowmeter_files_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/cicflowmeter/files/{filename}": {
+            "get": {
+                "tags": [
+                    "cicflowmeter",
+                    "cicflowmeter"
+                ],
+                "summary": "Get Analytics Cicflowmeter File",
+                "description": "Retrieves a file from Analytics - Tstat",
+                "operationId": "get_analytics_cicflowmeter_file_analytics_cicflowmeter_files__filename__get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "cicflowmeter",
+                    "cicflowmeter"
+                ],
+                "summary": "Delete Analytics File",
+                "description": "Deletes a file from Analytics - Cicflowmeter",
+                "operationId": "delete_analytics_file_analytics_cicflowmeter_files__filename__delete",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/analytics/cicflowmeter/files/{filename}/metadata": {
+            "get": {
+                "tags": [
+                    "cicflowmeter",
+                    "cicflowmeter"
+                ],
+                "summary": "Get Analytics Tstat File Metadata",
+                "description": "Get file Metadata from Analytics - Cicflowmeter",
+                "operationId": "get_analytics_tstat_file_metadata_analytics_cicflowmeter_files__filename__metadata_get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pcap/": {
+            "get": {
+                "tags": [
+                    "pcap"
+                ],
+                "summary": "List Pcap Files",
+                "description": "List all pcap files in Block Object & File Storeage",
+                "operationId": "list_pcap_files_pcap__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "pcap"
+                ],
+                "summary": "Upload Pcap File",
+                "description": "Uploads a pcap file to Block Object & File Storeage",
+                "operationId": "upload_pcap_file_pcap__post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_upload_pcap_file_pcap__post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pcap/{filename}": {
+            "get": {
+                "tags": [
+                    "pcap"
+                ],
+                "summary": "Get Pcap File",
+                "description": "Retrieves a file from Block Object & File Storeage",
+                "operationId": "get_pcap_file_pcap__filename__get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "pcap"
+                ],
+                "summary": "Delete Pcap File",
+                "description": "Deletes a file from Block Object & File Storeage",
+                "operationId": "delete_pcap_file_pcap__filename__delete",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pcap/{filename}/metadata": {
+            "get": {
+                "tags": [
+                    "pcap"
+                ],
+                "summary": "Get Pcap File Metadata",
+                "description": "Get file Metadata from Block Object & File Storeage",
+                "operationId": "get_pcap_file_metadata_pcap__filename__metadata_get",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Filename"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/": {
+            "get": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "List All Buckets",
+                "description": "List all buckets",
+                "operationId": "list_all_buckets_admin__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/buckets": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Create Bucket",
+                "description": "Create a new bucket",
+                "operationId": "create_bucket_admin_buckets_post",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_create_bucket_admin_buckets_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/buckets/{bucket_name}": {
+            "delete": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Delete Bucket",
+                "description": "Delete a bucket if empty",
+                "operationId": "delete_bucket_admin_buckets__bucket_name__delete",
+                "parameters": [
+                    {
+                        "name": "bucket_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Bucket Name"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Body_create_bucket_admin_buckets_post": {
+                "properties": {
+                    "bucket_name": {
+                        "type": "string",
+                        "title": "Bucket Name"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "bucket_name"
+                ],
+                "title": "Body_create_bucket_admin_buckets_post"
+            },
+            "Body_upload_analytics_cicflowmeter_file_analytics_cicflowmeter_files_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_analytics_cicflowmeter_file_analytics_cicflowmeter_files_post"
+            },
+            "Body_upload_analytics_pfcpflowmeter_file_analytics_pfcpflowmeter_files_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_analytics_pfcpflowmeter_file_analytics_pfcpflowmeter_files_post"
+            },
+            "Body_upload_analytics_tstat_file_analytics_tstat_files_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_analytics_tstat_file_analytics_tstat_files_post"
+            },
+            "Body_upload_file__bucket_name__files_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_file__bucket_name__files_post"
+            },
+            "Body_upload_pcap_file_pcap__post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_pcap_file_pcap__post"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}
