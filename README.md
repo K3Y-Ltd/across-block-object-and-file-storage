@@ -1,14 +1,9 @@
 # Block Object and File Storage
 
-This repository holds the installation of Block Object and File Storage service that has been developed and deployed during ACROSS project. It serves as a File Storage solution that has a 
+![Architecture](/docs/BOFS.jpg)
+
+This repository holds the installation of Block Object and File Storage service that has been developed and deployed during ACROSS project.
 During the ACROSS project, the Block Object and File Storage has been configured using [Minio](https://min.io/). This documentation file holds the necessary steps to be followed in order to deploy an instance on a cloud VM.
-
-### File information
-
-- **Creator**: Evangelos Syrmos
-- **PowerPoint Presentation**: [k3y.sharepoint](https://k3ybggr.sharepoint.com/:p:/s/K3Y/EbIaXg0DTKNCmaOA_CNQ1m8BTKhnkVoaQ3H5XVzMJJPBDg?e=fEnJ8q)
-- **Date**: November 2023
-- **Related Project**: ACROSS
 
 ## Prerequisites
 
