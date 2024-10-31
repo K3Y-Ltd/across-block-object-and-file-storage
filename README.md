@@ -1,9 +1,12 @@
+![ACROSS](/docs/logo_across.jpg)
+
 # Block Object and File Storage
 
-![Architecture](/docs/BOFS.jpg)
 
 This repository holds the installation of Block Object and File Storage service that has been developed and deployed during ACROSS project.
 During the ACROSS project, the Block Object and File Storage has been configured using [Minio](https://min.io/). This documentation file holds the necessary steps to be followed in order to deploy an instance on a cloud VM.
+
+![Architecture](/docs/BOFS.jpg)
 
 ## Prerequisites
 
@@ -93,3 +96,5 @@ To execute the REST API run the following command on the terminal:
 ### OpenAPI - Swagger - API Reference
 
 An OpenAPI file is also provided via the `swagger.json` file that can also be viewed via `{IP_ADDRESS}:5000/docs` or `{IP_ADDRESS}:5000/redocs`.
+
+![K3Y Ltd.](/docs/logo_k3y.png)
