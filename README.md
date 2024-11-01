@@ -93,8 +93,10 @@ The core libraries that you will need in order to run the following python REST 
 To execute the REST API run the following command on the terminal:
 `uvicorn rest-api:app --host 0.0.0.0 --port 5000`
 
+In case you want to run it in the background run the following command:
+`nohup uvicorn rest-api:app --host 0.0.0.0 --port 5000 > uvicorn_output.log 2>&1 &`
+
 ### OpenAPI - Swagger - API Reference
 
 An OpenAPI file is also provided via the `swagger.json` file that can also be viewed via `{IP_ADDRESS}:5000/docs` or `{IP_ADDRESS}:5000/redocs`.
-
 ![K3Y Ltd.](/docs/logo_k3y.png)
